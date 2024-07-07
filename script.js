@@ -3,6 +3,7 @@ const participants = [
     "What's Luv - Fat Joe, Ja Rule, Ashanti", "Lady Marmalade - Xtina, Lil Kim, Mya, Pink", "No Scrubs - TLC", "Foolish - Ashanti",
     "Where My Girls At - 702", "The Boy Is Mine - Brandy, Monica", "No More - 3LW", "Try Again - Aaliyah",
     "Are You That Somebody - Aaliyah", "Case of The Ex - Mya", "Let It Go - Keyshia Cole, Missy Elliot, Lil Kim", "Love Like This - Faith Evans"
+
 ];
 
 // Function to shuffle participants
@@ -34,10 +35,12 @@ function createBracket() {
 
                 const button1 = document.createElement('button');
                 button1.textContent = participant;
+                button1.id = `round-${roundIndex}-match-${i}-button1`;
                 button1.addEventListener('click', () => selectWinner(roundIndex, i));
 
                 const button2 = document.createElement('button');
                 button2.textContent = round[i + 1];
+                button2.id = `round-${roundIndex}-match-${i}-button2`;
                 button2.addEventListener('click', () => selectWinner(roundIndex, i + 1));
 
                 matchDiv.appendChild(button1);
@@ -80,6 +83,11 @@ function selectWinner(roundIndex, participantIndex) {
         rounds[roundIndex + 1] = nextRound;
     }
 
+    // Disable both participants in the match
+    const matchIndex = Math.floor(participantIndex / 2) * 2;
+    document.getElementById(`round-${roundIndex}-match-${matchIndex}-button1`).disabled = true;
+    document.getElementById(`round-${roundIndex}-match-${matchIndex}-button2`).disabled = true;
+
     if (nextRound.length === 1 && roundIndex === 3) {
         alert(`The champion is ${nextRound[0]}`);
     } else {
@@ -88,3 +96,4 @@ function selectWinner(roundIndex, participantIndex) {
 }
 
 createBracket();
+
