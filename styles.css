@@ -10,32 +10,41 @@ body {
 #bracket {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .round {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 .match {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 100px;
-    margin: 10px 0;
+    height: 150px;
+    margin: 20px 0;
 }
 
 button {
     margin: 5px;
-    padding: 10px;
+    padding: 20px;
     font-size: 16px;
-    width: 150px;
+    width: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 
 .connector {
-    height: 20px;
+    height: 40px;
     width: 1px;
     background-color: black;
     margin: 0 auto;
@@ -47,6 +56,7 @@ button {
 }
 
 .connector.vertical {
-    height: 20px;
+    height: 40px;
     width: 1px;
 }
+
